@@ -1,0 +1,47 @@
+{
+    "interface_type": "broker",
+    "connection_config": {
+        "host": "<broker_host>",
+        "user": "<broker_user>",
+        "password": "<broker_password>",
+        "port": "<broker_port>",
+        "exchanges": [
+            "exchange_baby_monitor"
+        ]
+    },
+    "normal_scenario": [{
+            "topic": "bm_info",
+            "type": "status"
+    }],
+    "exceptional_scenario": {
+        "tv_blocked": [{
+                "topic": "st_msg",
+                "type": "notification",
+                "body": "*"
+            },
+            {
+                "topic": "st_info",
+                "type": "status",
+                "body": { "block": true }
+            }
+        ]
+    },
+    "adaptation_actions": {
+        "tv_blocked": [{
+            "method": "POST",
+            "url": "http://<tv_host>/change_tv_status",
+            "body": {
+                "lock": false
+            }
+        }]
+    },
+    "return_to_normal_actions": {
+        "tv_blocked": [{
+            "method": "POST",
+            "url": "http://<tv_host>/change_tv_status",
+            "body": {
+                "lock": true
+            }
+        }]
+    }
+}

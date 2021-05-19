@@ -1,0 +1,26 @@
+{
+    "interface_type": "",
+    "connection_config": {},
+    "normal_scenario":[],
+    "exceptional_scenario": {
+        "scenario_name": []
+    },
+    "adaptation_actions": {
+        "scenario_name": [
+            {
+                "method": "",
+                "url": "",
+                "body": {}
+            }
+        ]
+    },
+    "return_to_normal_actions": {
+        "scenario_name": [
+            {
+                "method": "",
+                "url": "",
+                "body": {}
+            }
+        ]
+    }
+}
